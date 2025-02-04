@@ -7,7 +7,9 @@ const cloudinary = require("cloudinary"
 const mongoose = require("mongoose")
 const bot = new TelegramBot(process.env.TOKEN , {polling : true});
 const app = express()
-
+const cors = require("cors");
+app.use(cors());
+app.use(express.json());
 mongoose.connect(process.env.DB).then(()=>console.log("DB Connected")).catch((err)=>console.log(err));
 const upload = multer({dest : "uploads/"})
 cloudinary.config({
@@ -37,7 +39,7 @@ bot.on('document',async(msg)=>{
         const uploadFile = await cloudinary.uploader.upload(fileLink , {resource_type : "auto"});
         const newFile =new File({fileId , fileUrl : uploadFile.secure_url , fileType : msg.document.mime_type,userId : user,fileName : fileName});
         await newFile.save();
-        bot.sendMessage(chatId , `✅ File Uploaded successfully. To access the file \n\n Link - ${uploadFile.secure_url}.`)
+        bot.sendMessage(chatId , `✅ File Uploaded successfully. To access the file \n\n Link - ${uploadFile.secure_url}. \n\n Gallery Link - ${process.env.LIVE}/${user} `)
     }catch(error){
         console.log("Upload Error" , error);
         bot.sendMessage(chatId , "File Upload Failed");
@@ -45,10 +47,10 @@ bot.on('document',async(msg)=>{
 })
 console.log("📂 Telegram File Uploader Bot is running...");
 
-app.get("/gallery" , async(req,res)=>{
+app.post("/gallery" , async(req,res)=>{
     try {
         const data = req.body;
-        const userId = data.id;
+        const userId = data.userId;
        
         if(!userId){
           return res.status(404).json({"Message" : "User Not Found"});

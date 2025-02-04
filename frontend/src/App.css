@@ -1,0 +1,101 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Body styling */
+  body {
+    background-color: #f4f7fc;
+    color: #333;
+    font-size: 16px;
+    padding: 20px;
+  }
+  
+  /* Center the content */
+  div {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Heading */
+  h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* File Container */
+  div > div {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  div > div:hover {
+    transform: translateY(-5px); /* Hover effect */
+  }
+  
+  /* File Name */
+  h3 {
+    font-size: 1.25rem;
+    color: #2d2d2d;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Image Styling */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* File Type */
+  p {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Upload Date */
+  p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  /* View File Link */
+  a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* No Files Message */
+  p.no-files-message {
+    font-size: 1.25rem;
+    color: #888;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
